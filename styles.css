@@ -1,0 +1,42 @@
+body {
+  background-color: black;
+  color: white;
+}
+
+main {
+  background-color: #474744;
+  margin: 3em auto;
+  border-radius: 5px;
+  width: 320px;
+  height: 500px;
+}
+
+h1 {
+  padding: 1em;
+}
+
+.inputs-container {
+  margin: auto;
+}
+
+.input-data {
+  display: block;
+  margin: 8% auto;
+  padding: 1em;
+  border-radius: 5px;
+  border: none;
+}
+
+.current-time {
+  text-align: center;
+  margin: 10% auto;
+}
+
+.clock-in-btn {
+  display: block;
+  margin: auto;
+  padding: 1em 2.5em;
+  border: 1px solid #00ff00;
+  border-radius: 5px;
+  box-shadow: 0 0px 10px #00ff00;
+}
