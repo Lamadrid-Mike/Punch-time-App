@@ -4,7 +4,7 @@ body {
 }
 
 main {
-  background-color: #474744;
+  background-color: #333333;
   margin: 3em auto;
   border-radius: 5px;
   width: 320px;
@@ -30,13 +30,33 @@ h1 {
 .current-time {
   text-align: center;
   margin: 10% auto;
+  animation: display-time 4s;
 }
 
 .clock-in-btn {
   display: block;
   margin: auto;
   padding: 1em 2.5em;
-  border: 1px solid #00ff00;
   border-radius: 5px;
-  box-shadow: 0 0px 10px #00ff00;
+  border: none;
+}
+
+@keyframes display-time {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes effect-when-true {
+  to {
+    border: 1px solid #00ff00;
+    box-shadow: 0 0px 10px #00ff00;
+  }
+}
+
+.clock-in-true {
+  animation: effect-when-true 2s forwards;
 }

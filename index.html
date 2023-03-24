@@ -12,14 +12,21 @@
     <main>
       <h1>ADP</h1>
       <div class="inputs-container">
-        <input type="text" id="name" class="input-data" placeholder="Name" />
         <input
           type="text"
           id="name"
-          class="input-data"
-          placeholder="Id Number"
+          class="input-data input-name"
+          placeholder="Name"
+          maxlength="10"
         />
-        <h2 class="current-time">Current time</h2>
+        <input
+          type="text"
+          id="id-number"
+          class="input-data input-id"
+          placeholder="4 Numbers ID"
+          maxlength="4"
+        />
+        <h2 class="current-time"></h2>
       </div>
       <button class="clock-in-btn">Clock In</button>
     </main>
