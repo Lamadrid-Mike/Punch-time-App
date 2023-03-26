@@ -22,6 +22,7 @@ class App {
   time;
   minutes = 0;
   seconds = 0;
+  intervalState;
   constructor() {
     setInterval(this.displayTime, 1000);
     nameInput.addEventListener("change", this.inputData.bind(this));
@@ -39,10 +40,14 @@ class App {
       : clockInBtn.classList.remove("clock-in-true");
   }
 
-  workingTime() {
+  workingTime = () => {
     this.seconds++;
+    if (this.seconds === 60) {
+      this.minutes++;
+      this.seconds = 0;
+    }
     console.log(this.seconds);
-  }
+  };
 
   clearInputs() {
     nameInput.value = "";
@@ -57,6 +62,20 @@ class App {
   unHideInputs() {
     nameInput.style.display = "block";
     idInput.style.display = "block";
+  }
+
+  addingClasses() {
+    clockInBtn.classList.remove("clock-in-true");
+    clockInBtn.classList.add("clock-in-false");
+    clockInBtn.setAttribute("state", "true");
+    clockInBtn.innerHTML = "Clock Out";
+  }
+
+  removingClasses() {
+    clockInBtn.classList.remove("clock-in-false");
+    clockInBtn.setAttribute("state", "false");
+    displayUsername.innerHTML = "";
+    clockInBtn.innerHTML = "Clock In";
   }
 
   displayTime() {
@@ -79,23 +98,19 @@ class App {
   }
 
   clockIn() {
+    this.intervalState = setInterval(this.workingTime, 1000);
     this.hideInputs();
     this.inputData();
+    this.addingClasses();
     displayUsername.innerHTML = `Hello,  ${this.username}`;
-    clockInBtn.classList.remove("clock-in-true");
-    clockInBtn.classList.add("clock-in-false");
-    clockInBtn.innerHTML = "Clock Out";
-    clockInBtn.setAttribute("state", "true");
   }
 
   clockOut() {
+    clearInterval(this.intervalState);
     this.clearInputs();
     this.unHideInputs();
-    displayUsername.innerHTML = "";
+    this.removingClasses();
     this.clockOutTime = this.displayTime();
-    clockInBtn.innerHTML = "Clock In";
-    clockInBtn.classList.remove("clock-in-false");
-    clockInBtn.setAttribute("state", "false");
   }
 }
 
