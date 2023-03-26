@@ -41,6 +41,10 @@ h1 {
   border: none;
 }
 
+.display-user-name {
+  text-align: center;
+}
+
 @keyframes display-time {
   from {
     opacity: 0;
@@ -52,11 +56,22 @@ h1 {
 
 @keyframes effect-when-true {
   to {
-    border: 1px solid #00ff00;
+    border: 0.5px solid #00ff00;
     box-shadow: 0 0px 10px #00ff00;
   }
 }
 
 .clock-in-true {
-  animation: effect-when-true 2s forwards;
+  animation: effect-when-true 0.5s forwards;
+}
+
+@keyframes effect-when-false {
+  to {
+    border: 1px solid #ff3300;
+    box-shadow: 0 0px 10px #ff3300;
+  }
+}
+
+.clock-in-false {
+  animation: effect-when-false 1s forwards;
 }
