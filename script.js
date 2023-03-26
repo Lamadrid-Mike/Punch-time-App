@@ -3,6 +3,7 @@ const nameInput = document.querySelector(".input-name");
 const idInput = document.querySelector(".input-id");
 const clockInBtn = document.querySelector(".clock-in-btn");
 const displayUsername = document.querySelector(".display-user-name");
+const displayWorkingTime = document.querySelector(".working-time");
 
 class TimeStamp {
   constructor(name, id, time, date) {
@@ -46,7 +47,7 @@ class App {
       this.minutes++;
       this.seconds = 0;
     }
-    console.log(this.seconds);
+    displayWorkingTime.innerHTML = this.seconds;
   };
 
   clearInputs() {
@@ -64,18 +65,24 @@ class App {
     idInput.style.display = "block";
   }
 
-  addingClasses() {
+  clockInClasses() {
     clockInBtn.classList.remove("clock-in-true");
     clockInBtn.classList.add("clock-in-false");
     clockInBtn.setAttribute("state", "true");
     clockInBtn.innerHTML = "Clock Out";
+    displayUsername.style.display = "block";
+    displayWorkingTime.style.display = "block";
+    displayTime.style.display = "none";
   }
 
-  removingClasses() {
+  clockOutClasses() {
     clockInBtn.classList.remove("clock-in-false");
     clockInBtn.setAttribute("state", "false");
     displayUsername.innerHTML = "";
     clockInBtn.innerHTML = "Clock In";
+    displayUsername.style.display = "none";
+    displayWorkingTime.style.display = "none";
+    displayTime.style.display = "block";
   }
 
   displayTime() {
@@ -101,7 +108,7 @@ class App {
     this.intervalState = setInterval(this.workingTime, 1000);
     this.hideInputs();
     this.inputData();
-    this.addingClasses();
+    this.clockInClasses();
     displayUsername.innerHTML = `Hello,  ${this.username}`;
   }
 
@@ -109,8 +116,7 @@ class App {
     clearInterval(this.intervalState);
     this.clearInputs();
     this.unHideInputs();
-    this.removingClasses();
-    this.clockOutTime = this.displayTime();
+    this.clockOutClasses();
   }
 }
 

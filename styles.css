@@ -43,6 +43,12 @@ h1 {
 
 .display-user-name {
   text-align: center;
+  display: none;
+}
+
+.working-time {
+  text-align: center;
+  display: none;
 }
 
 @keyframes display-time {
