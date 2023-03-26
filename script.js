@@ -30,7 +30,9 @@ class App {
   }
 
   inputData() {
-    this.username = nameInput.value;
+    let name = nameInput.value;
+    let firstLetter = name.charAt(0).toUpperCase();
+    this.username = firstLetter + name.slice(1);
     this.idNumber = idInput.value;
     this.username
       ? clockInBtn.classList.add("clock-in-true")
@@ -40,6 +42,11 @@ class App {
   workingTime() {
     this.seconds++;
     console.log(this.seconds);
+  }
+
+  clearInputs() {
+    nameInput.value = "";
+    idInput.value = "";
   }
 
   hideInputs() {
@@ -74,7 +81,7 @@ class App {
   clockIn() {
     this.hideInputs();
     this.inputData();
-    displayUsername.innerHTML = `Hello, ${this.username}`;
+    displayUsername.innerHTML = `Hello,  ${this.username}`;
     clockInBtn.classList.remove("clock-in-true");
     clockInBtn.classList.add("clock-in-false");
     clockInBtn.innerHTML = "Clock Out";
@@ -82,6 +89,7 @@ class App {
   }
 
   clockOut() {
+    this.clearInputs();
     this.unHideInputs();
     displayUsername.innerHTML = "";
     this.clockOutTime = this.displayTime();
