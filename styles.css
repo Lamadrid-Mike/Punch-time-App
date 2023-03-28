@@ -1,10 +1,9 @@
 body {
-  background-color: black;
+  background-color: #333333;
   color: white;
 }
 
 main {
-  background-color: #333333;
   margin: 2em auto;
   border-radius: 5px;
   padding: 3em;
