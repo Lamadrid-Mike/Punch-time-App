@@ -5,10 +5,9 @@ body {
 
 main {
   background-color: #333333;
-  margin: 3em auto;
+  margin: 2em auto;
   border-radius: 5px;
-  width: 320px;
-  height: 500px;
+  padding: 3em;
 }
 
 h1 {
@@ -51,6 +50,10 @@ h1 {
   display: none;
 }
 
+.summary {
+  text-align: center;
+}
+
 @keyframes display-time {
   from {
     opacity: 0;
@@ -80,4 +83,8 @@ h1 {
 
 .clock-in-false {
   animation: effect-when-false 1s forwards;
+}
+
+.display-working-time {
+  animation: display-time forwards 1s;
 }

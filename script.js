@@ -4,12 +4,15 @@ const idInput = document.querySelector(".input-id");
 const clockInBtn = document.querySelector(".clock-in-btn");
 const displayUsername = document.querySelector(".display-user-name");
 const displayWorkingTime = document.querySelector(".working-time");
+const workSummary = document.querySelector(".summary");
+
+let timeCard = [];
 
 class TimeStamp {
-  constructor(name, id, time, date) {
+  constructor(name, id, workedTime, date) {
     this.name = name;
     this.id = id;
-    this.time = time;
+    this.workedTime = workedTime;
     this.date = date;
   }
 }
@@ -20,7 +23,7 @@ class App {
   clockInTime;
   clockOutTime;
   date;
-  time;
+  clock;
   minutes = 0;
   seconds = 0;
   intervalState;
@@ -43,16 +46,27 @@ class App {
 
   workingTime = () => {
     this.seconds++;
-    if (this.seconds === 60) {
+    if (this.seconds <= 9) {
+      displayWorkingTime.innerHTML = `0${this.minutes}:0${this.seconds}`;
+    } else {
+      displayWorkingTime.innerHTML = `0${this.minutes}:${this.seconds}`;
+    }
+    if (this.seconds == 60) {
       this.minutes++;
       this.seconds = 0;
     }
-    displayWorkingTime.innerHTML = this.seconds;
   };
+
+  workingTimeClass() {
+    displayWorkingTime.classList.add("display-working-time");
+  }
 
   clearInputs() {
     nameInput.value = "";
     idInput.value = "";
+    this.username = undefined;
+    this.minutes = 0;
+    this.seconds = 0;
   }
 
   hideInputs() {
@@ -87,13 +101,14 @@ class App {
 
   displayTime() {
     this.date = new Date();
-    this.time = this.date.toLocaleString("en-US", {
+    let localDate = date.toLocaleDateString();
+    this.clock = this.date.toLocaleString("en-US", {
       hour: "numeric",
       minute: "numeric",
       hour12: true,
     });
-    displayTime.innerHTML = this.time;
-    return this.date;
+    displayTime.innerHTML = this.clock;
+    return localDate;
   }
 
   btnFunction() {
@@ -105,7 +120,9 @@ class App {
   }
 
   clockIn() {
+    if (this.username === undefined) return;
     this.intervalState = setInterval(this.workingTime, 1000);
+    this.workingTimeClass();
     this.hideInputs();
     this.inputData();
     this.clockInClasses();
@@ -113,10 +130,23 @@ class App {
   }
 
   clockOut() {
+    workSummary.innerHTML = `${this.username} you worked ${
+      this.minutes
+    } on ${this.displayTime()}`;
+    timeCard.push(
+      new TimeStamp(
+        this.username,
+        this.idNumber,
+        this.minutes,
+        this.displayTime()
+      )
+    );
     clearInterval(this.intervalState);
     this.clearInputs();
     this.unHideInputs();
     this.clockOutClasses();
+    this.displayTime();
+    console.log(timeCard);
   }
 }
 
