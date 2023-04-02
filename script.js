@@ -129,15 +129,23 @@ class App {
     displayUsername.innerHTML = `Hello,  ${this.username}`;
   }
 
+  removeSummary() {
+    setTimeout(() => {
+      workSummary.classList.add("fade-out-summary");
+    }, 5000);
+    setTimeout(() => {
+      workSummary.innerHTML = "";
+      workSummary.classList.remove("fade-out-summary");
+    }, 6000);
+  }
+
   clockOut() {
-    workSummary.innerHTML = `${this.username} you worked ${
-      this.minutes
-    } on ${this.displayTime()}`;
+    workSummary.innerHTML = `${this.username} you worked ${this.seconds} hours today👍🏽`;
     timeCard.push(
       new TimeStamp(
         this.username,
         this.idNumber,
-        this.minutes,
+        this.seconds,
         this.displayTime()
       )
     );
@@ -146,6 +154,7 @@ class App {
     this.unHideInputs();
     this.clockOutClasses();
     this.displayTime();
+    this.removeSummary();
     console.log(timeCard);
   }
 }

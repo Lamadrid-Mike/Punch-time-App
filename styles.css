@@ -1,10 +1,11 @@
 body {
   background-color: #333333;
   color: white;
+  font-family: "Josefin Sans", sans-serif;
 }
 
 main {
-  margin: 2em auto;
+  margin: auto;
   border-radius: 5px;
   padding: 3em;
 }
@@ -60,6 +61,19 @@ h1 {
   to {
     opacity: 1;
   }
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.fade-out-summary {
+  animation: fade-out forwards 0.5s;
 }
 
 @keyframes effect-when-true {
