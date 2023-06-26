@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <script defer src="./scripts/script.js"></script>
+    <title>Clock-in App</title>
+    <link rel="icon" href="/my-logo.jpg" type="image/x-icon" />
+  </head>
+  <body>
+    <main>
+      <h1>Clock-in App</h1>
+      <form class="inputs-container" method="post">
+        <h2 class="display-user-name"></h2>
+        <h2 class="working-time"></h2>
+        <input
+          type="text"
+          id="name"
+          class="input-data input-name"
+          placeholder="Name"
+          maxlength="10"
+          type="text"
+        />
+        <input
+          type="text"
+          id="id-number"
+          class="input-data input-id"
+          placeholder="4 Numbers ID"
+          maxlength="4"
+          type="number"
+        />
+        <h2 class="current-time"></h2>
+      </form>
+      <button class="clock-in-btn" state="false">Clock In</button>
+      <h3 class="summary"></h3>
+    </main>
+  </body>
+</html>
