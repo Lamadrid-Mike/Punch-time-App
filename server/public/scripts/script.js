@@ -152,7 +152,7 @@ class App {
   }
 
   clockOut() {
-    workSummary.innerHTML = `${this.username} you worked ${this.seconds} seconds today👍🏽`;
+    workSummary.innerHTML = `${this.username} you worked ${this.seconds} hours today👍🏽`;
     timeCard.push(
       new TimeStamp(
         this.username,
